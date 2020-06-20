@@ -1,11 +1,12 @@
 import inspect
-from typing import Any, Callable, List, Union
+from typing import Any, Callable, Dict, List, Union
 from cvars import CHAR_CHECK_MARK, INDENT_SEQ, LEVELS, STATS
 from contextlib import contextmanager
+from contextvars import ContextVar
 
 
 @contextmanager
-def increase_counter(contextvar):
+def increase_counter(contextvar: ContextVar):
     token = contextvar.set(contextvar.get() + 1)
     try:
         yield
@@ -30,8 +31,8 @@ def format_levels():
     print()
 
 
-def format_calls(ascendant=True):
-    print(f'\{CHAR_CHECK_MARK} Traced functions and its number of calls\n')
+def format_calls(ascendant: boolean = True):
+    print(f'\n{CHAR_CHECK_MARK} Traced functions and its number of calls\n')
     for stat in STATS[::-ascendant]:
         fname = stat['fname']
         calls = stat['calls']
@@ -43,13 +44,15 @@ def is_async(function: Callable) -> bool:
     return inspect.iscoroutinefunction(function)
 
 
-def update_dict_array(
-    keys: List[str],
-    values: List[Union[str, int]],
-    array: List[Any],
-    unique_values: bool = True,
-):
-    new_element = {keys[i]: values[i] for i in range(len(keys))}
-    last_element = array[-1] if array else []
+def update_levels(new_element: Dict[str, Union[str, int]]):
+    last_element = LEVELS[-1] if LEVELS else []
     if new_element != last_element:
-        array.append(new_element)
+        LEVELS.append(new_element)
+
+
+def update_stats(key: str):
+    fnames = [list(e.values())[0] for e in STATS]
+    if key in fnames:
+        STATS[fnames.index(key)]['calls'] += 1
+    else:
+        STATS.append({'fname': key, 'calls': 1})

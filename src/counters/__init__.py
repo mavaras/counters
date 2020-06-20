@@ -9,7 +9,8 @@ from cvars import (
 )
 from utils import (
     format_levels, format_calls,
-    increase_counter, is_async, update_dict_array
+    increase_counter, is_async,
+    update_levels, update_stats
 )
 
 
@@ -30,8 +31,8 @@ def counter(function):
             wrapper.calls += 1
             with increase_counter(LEVEL):
                 FLOW.append(function.__name__)
-                update_dict_array(['fname', 'calls'], [fname, wrapper.calls], STATS)
-                update_dict_array(['fname', 'level'], [fname, LEVEL.get()], LEVELS)
+                update_stats(fname)
+                update_levels({'fname': fname, 'level': LEVEL.get()})
                 await function(*args, **kwargs)
     else:
         @wraps(function)
@@ -39,8 +40,8 @@ def counter(function):
             wrapper.calls += 1
             with increase_counter(LEVEL):
                 FLOW.append(function.__name__)
-                update_dict_array(['fname', 'calls'], [fname, wrapper.calls], STATS)
-                update_dict_array(['fname', 'level'], [fname, LEVEL.get()], LEVELS)
+                update_stats(fname)
+                update_levels({'fname': fname, 'level': LEVEL.get()})
                 function(*args, **kwargs)
 
     wrapper.calls = 0
