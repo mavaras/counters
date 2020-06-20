@@ -31,7 +31,7 @@ def format_levels():
 
 
 def format_calls(ascendant=True):
-    print(f'\n{CHAR_CHECK_MARK} Traced functions and its number of calls\n')
+    print(f'\{CHAR_CHECK_MARK} Traced functions and its number of calls\n')
     for stat in STATS[::-ascendant]:
         fname = stat['fname']
         calls = stat['calls']
@@ -50,5 +50,6 @@ def update_dict_array(
     unique_values: bool = True,
 ):
     new_element = {keys[i]: values[i] for i in range(len(keys))}
-    if new_element not in array:
+    last_element = array[-1] if array else []
+    if new_element != last_element:
         array.append(new_element)
