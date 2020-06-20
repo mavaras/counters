@@ -1,5 +1,6 @@
 /dist
 /src/counters/__pycache__
 /src/counters/test.py
-setup.py
 .DS_Store
+/build
+/counters_mavaras.egg-info

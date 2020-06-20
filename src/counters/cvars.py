@@ -13,3 +13,6 @@ STATS: List[Fcall] = []
 LEVELS: List[Fcall] = []
 
 FLOW: List[str] = []
+
+CHAR_CHECK_MARK = chr(0X2713)
+INDENT_SEQ = '    '

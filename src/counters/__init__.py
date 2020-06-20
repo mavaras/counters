@@ -8,7 +8,8 @@ from cvars import (
     FLOW, LEVEL, LEVELS, STATS
 )
 from utils import (
-    format_levels, increase_counter, is_async, update_dict_array
+    format_levels, format_calls,
+    increase_counter, is_async, update_dict_array
 )
 
 
