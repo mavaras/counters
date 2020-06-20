@@ -1,8 +1,10 @@
 import inspect
-from typing import Any, Callable, Dict, List, Union
-from cvars import CHAR_CHECK_MARK, INDENT_SEQ, LEVELS, STATS
+from typing import (
+    Callable, Dict, Union
+)
 from contextlib import contextmanager
 from contextvars import ContextVar
+from cvars import CHAR_CHECK_MARK, INDENT_SEQ, LEVELS, STATS
 
 
 @contextmanager
