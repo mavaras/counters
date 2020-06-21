@@ -1,14 +1,9 @@
 from functools import wraps
-import inspect
-import asyncio
-from typing import Any, Callable, List, Union
-from tracers.function import trace
 
-from cvars import (
+from counters.cvars import (
     FLOW, LEVEL, LEVELS, STATS
 )
-from utils import (
-    format_levels, format_calls,
+from counters.utils import (
     increase_counter, is_async,
     update_levels, update_stats
 )

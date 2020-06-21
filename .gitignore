@@ -1,5 +1,5 @@
 /dist
-/src/counters/__pycache__
+/**/__pycache__
 /src/counters/test.py
 .DS_Store
 /build
