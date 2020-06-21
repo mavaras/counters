@@ -1,4 +1,7 @@
 # Counters
+![Python package](https://github.com/mavaras/counters/workflows/Python%20package/badge.svg)
+
+
 **counters** is a code stats monitoring tool that provides both calling counter and flow chain for/between functions. It allows you to see what are your 'heat'/more concurrent functions as well as know what the function call chain is in all or part of your code.
 You can use **counters** with sync, async or mixed function call chains.
 Additonal features or data are being considered to added to this proyect (WIP).
@@ -19,7 +22,6 @@ def second():
 
 @counter
 def third():
-    print(third.calls)  # you can acces in real time to the funct current calls!
     fourth()
     second()
 
@@ -42,7 +44,7 @@ Here we have a collection of functions with nested calls. If you run it, all the
 ```bash
 ✓ Traced functions nested call chain
 
-    L   1    2    3    4    5    6    7    8
+    L   1    2    3    4    5    6    7    8    9    10    11
     |    ·-> main
     |    |    ·-> first
     |    |    |    ·-> third
@@ -58,8 +60,7 @@ Here we have a collection of functions with nested calls. If you run it, all the
     |    |    |    ·-> second
 ```
 
-You can get the real-time function calls by calling *Xfuncion*.calls inside *Xfunction*, being *Xfunction* the function whose calls you desire to see.
-You can also get a global calls look:
+You can also get the calls:
 
 ```bash
 ✓ Traced functions with its number of calls
