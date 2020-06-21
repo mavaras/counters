@@ -5,29 +5,29 @@ from counters.utils import format_calls, format_levels
 
 @counter
 async def first():
-    third()
-    await second()
-
-
-@counter
-async def second():
-    pass
-
-
-@counter
-def third():
-    fourth()
+    await third()
     second()
 
 
 @counter
-def fourth():
+def second():
+    pass
+
+
+@counter
+async def third():
+    await fourth()
+    second()
+
+
+@counter
+async def fourth():
     second()
 
 
 @counter
 async def main():
-    for _ in range(1):
+    for _ in range(2):
         asyncio.create_task(first())
 
 asyncio.run(main())
