@@ -21,7 +21,7 @@ def increase_counter(contextvar: ContextVar) -> Generator:
 def format_levels():
     print(f'\n{CHAR_CHECK_MARK} Traced functions nested call chain\n')
     print(f'{INDENT_SEQ}L{INDENT_SEQ}', end='')
-    for i in range(1, len(LEVELS.get()) - 1):
+    for i in range(1, len(STATS.get()) + 4):
         print(f'{i}{INDENT_SEQ}', end='')
     print()
     for level in LEVELS.get():
