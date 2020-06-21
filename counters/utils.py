@@ -18,10 +18,6 @@ def increase_counter(contextvar: ContextVar) -> Generator:
         contextvar.reset(token)
 
 
-def levels():
-    format_levels()
-
-
 def format_levels():
     print(f'\n{CHAR_CHECK_MARK} Traced functions nested call chain\n')
     print(f'{INDENT_SEQ}L{INDENT_SEQ}', end='')
@@ -36,7 +32,7 @@ def format_levels():
 
 
 def format_calls(ascendant: bool = True):
-    print(f'\n{CHAR_CHECK_MARK} Traced functions and its number of calls\n')
+    print(f'\n{CHAR_CHECK_MARK} Traced functions with its number of calls\n')
     for stat in STATS.get()[::-ascendant]:
         fname = str(stat['fname'])
         calls = int(stat['calls'])

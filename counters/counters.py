@@ -9,14 +9,6 @@ from counters.utils import (
 )
 
 
-def get_stats():
-    return STATS
-
-
-def get_levels():
-    return LEVELS
-
-
 def counter(function):
     fname = function.__name__
     if is_async(function):
