@@ -6,7 +6,7 @@ with open('README.md', 'r') as fh:
 setuptools.setup(
     name='counters-mavaras',
     version='0.0.1',
-    author='Example Author',
+    author='Mario Varas',
     author_email='maario.vrs@gmail.com',
     description='Function call counter and code flow display',
     long_description=long_description,
@@ -18,5 +18,5 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
 )
