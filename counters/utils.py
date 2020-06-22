@@ -64,3 +64,7 @@ def update_stats(key: str):
         aux = STATS.get()
         aux.append({'fname': key, 'calls': 1})
         STATS.set(aux)
+
+
+def noop():
+    pass
