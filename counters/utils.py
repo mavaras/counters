@@ -1,4 +1,4 @@
-import inspect
+import asyncio
 from typing import (
     Callable, Dict, Generator, List, Optional, Union
 )
@@ -41,7 +41,7 @@ def format_calls(ascendant: bool = True):
 
 
 def is_async(function: Callable) -> bool:
-    return inspect.iscoroutinefunction(function)
+    return asyncio.iscoroutinefunction(function)
 
 
 def update_levels(new_element: Dict[str, Union[str, int]]):
